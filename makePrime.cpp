@@ -18,15 +18,24 @@ int main()
 {
   //Creating p and q random primitive numbers.
   srand(time(NULL));
-  long p = makePrime(rand() % RAND_MAX/2 + RAND_MAX);
-  long q =  makePrime(rand() % RAND_MAX/2 + RAND_MAX);
+  long p = makePrime(rand() % RAND_MAX/4 + RAND_MAX/2);
+  long q =  makePrime(rand() % RAND_MAX/4 + RAND_MAX/2);
 
   //Prime Number Count between p and q.
   long fi = (p-1)*(q-1);
-  cout << p << " " << q << " " << fi << endl;
+
+  //Generating n Key
+  long n = p*q;
+
+  //Generating General Key and Personal Key
+  long e = rand() % 1 + fi;
+  long d = 0;
   do {
-    int e = 0;
-    int d = 0;
-    /* code */
-  } while(euclidGCD(e,d) == 1)});
+    //Try next time dynamic memory..
+      d = rand() % 1 + fi;
+      if((euclidGCD(e,fi) == 1) && (e*d % fi == 1) && e != d)
+        break;
+      cout << p << " " << q << " " << fi << " " << n << " " << e << " " << d << endl;
+  } while(true);
+  cout << p << " " << q << " " << fi << " " << e << " " << d << endl;
 }
